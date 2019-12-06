@@ -45,7 +45,7 @@ class Pokemon
   end
   
   def self.update(db)
-    sql = "UPDATE pokemon SET name = ?, type = ?, WHERE id = ?"
+    sql = "UPDATE pokemon SET name = ?, type = ? WHERE id = ?"
     db.execute(sql, @name, @type, @id)
   end
   
