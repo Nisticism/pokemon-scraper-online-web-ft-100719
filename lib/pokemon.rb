@@ -19,12 +19,12 @@ class Pokemon
         VALUES (?, ?, ?)
       SQL
  
-      @db.execute(sql, name, type, db)
-      @id = @db.execute("SELECT last_insert_rowid() FROM pokemon")[0][0]
+      db.execute(sql, name, type, db)
+      @id = db.execute("SELECT last_insert_rowid() FROM pokemon")[0][0]
     end
   end
   
-  def self.find(id)
+  def self.find(id, db)
     sql = <<-SQL
       SELECT *
       FROM pokemon
@@ -32,7 +32,7 @@ class Pokemon
       LIMIT 1
     SQL
 
-    result = @db.execute(sql, id)[0]
+    result = db.execute(sql, id)[0]
     Pokemon.new(result[0], result[1], result[2])
   end
   
