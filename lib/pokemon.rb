@@ -33,7 +33,7 @@ class Pokemon
     SQL
 
     result = db.execute(sql, id)[0]
-    Pokemon.new(result[0], result[1], result[2])
+    self.new(result[0], result[1], result[2])
   end
   
   def self.new_from_db(row)
